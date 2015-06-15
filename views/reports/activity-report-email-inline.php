@@ -119,7 +119,7 @@ h6 a:visited { color: purple !important; }
 				<div style="float: right; text-align: right; line-height: 1.1; color: #666666; font-size: 100%; vertical-align: baseline; margin: 20px 0 0; padding: 0; border: 0;" align="right">
 					<?php echo $title ?>
 				</div>
-				<a href="http://www.wphacklock.com" style="font-size: 100%; vertical-align: baseline; outline: none; color: orange; text-decoration: none; margin: 0; padding: 0; border: 0;"><img src="http://www.wphacklock.com/wp-content/uploads/2015/04/SM_WP_350x661.png" alt="" style="font-size: 100%; vertical-align: baseline; -ms-interpolation-mode: bicubic; outline: none; text-decoration: none; margin: 0; padding: 0; border: 0 none;" /></a>
+				<a href="http://www.wphacklock.com" style="font-size: 100%; vertical-align: baseline; outline: none; color: orange; text-decoration: none; margin: 0; padding: 0; border: 0;"><img src="http://www.wphacklock.com/wp-content/uploads/2015/06/WPHackLock_350x66.png" alt="" style="font-size: 100%; vertical-align: baseline; -ms-interpolation-mode: bicubic; outline: none; text-decoration: none; margin: 0; padding: 0; border: 0 none;" /></a>
 
 				<p style="font-size: 100%; vertical-align: baseline; margin: 1em 0; padding: 0; border: 0;">
 					This email was sent from your website <a href="<?php echo site_url() ?>"><?php echo site_url() ?></a> and is a summary of security related activity that WP HackLock monitors for the period <?php printf('%s to %s', $report_start, $report_end) ?>.
@@ -287,44 +287,8 @@ h6 a:visited { color: purple !important; }
 
 				<?php wfHelperString::cycle(); ?>
 
-				<h2 style="font-size: 20px; vertical-align: baseline; clear: both; color: #222 !important; margin: 20px 0 4px; padding: 0; border: 0;">Updates Needed</h2>
-
-				<?php if ($updates_needed['core']): ?>
-					<h4 style="font-size: 16px; vertical-align: baseline; clear: both; color: #666666 !important; margin: 20px 0 4px; padding: 0; border: 0;">Core</h4>
-					<ul style="font-size: 100%; vertical-align: baseline; list-style-type: none; margin: 0; padding: 0; border: 0;">
-						<li style="font-size: 100%; vertical-align: baseline; margin: 0; padding: 0; border: 0;">A new version of WordPress (v<?php echo esc_html($updates_needed['core']) ?>) is available.</li>
-					</ul>
-				<?php endif ?>
-				<?php if ($updates_needed['plugins']): ?>
-					<h4 style="font-size: 16px; vertical-align: baseline; clear: both; color: #666666 !important; margin: 20px 0 4px; padding: 0; border: 0;">Plugins</h4>
-					<ul style="font-size: 100%; vertical-align: baseline; list-style-type: none; margin: 0; padding: 0; border: 0;">
-						<?php foreach ($updates_needed['plugins'] as $plugin): ?>
-							<li style="font-size: 100%; vertical-align: baseline; margin: 0; padding: 0; border: 0;">
-								A new version of the plugin "<?php echo esc_html("{$plugin['Name']} (v{$plugin['newVersion']})") ?>" is available.
-							</li>
-						<?php endforeach ?>
-					</ul>
-				<?php endif ?>
-				<?php if ($updates_needed['themes']): ?>
-					<h4 style="font-size: 16px; vertical-align: baseline; clear: both; color: #666666 !important; margin: 20px 0 4px; padding: 0; border: 0;">Themes</h4>
-					<ul style="font-size: 100%; vertical-align: baseline; list-style-type: none; margin: 0; padding: 0; border: 0;">
-						<?php foreach ($updates_needed['themes'] as $theme): ?>
-							<li style="font-size: 100%; vertical-align: baseline; margin: 0; padding: 0; border: 0;">
-								A new version of the theme "<?php echo esc_html("{$theme['name']} (v{$theme['newVersion']})") ?>" is available.
-							</li>
-						<?php endforeach ?>
-					</ul>
-				<?php endif ?>
-				
-				<?php if ($updates_needed['core'] || $updates_needed['plugins'] || $updates_needed['themes']): ?>
-					<p style="font-size: 100%; vertical-align: baseline; margin: 1em 0; padding: 0; border: 0;">
-						<a class="button" href="<?php echo esc_attr(network_admin_url('update-core.php')) ?>" style="font-size: 13px; vertical-align: baseline; outline: none; color: #FFF; text-decoration: none; display: inline-block; line-height: 26px; height: 28px; cursor: pointer; border-radius: 3px; white-space: nowrap; box-sizing: border-box; box-shadow: 0 1px 0 rgba(120, 200, 230, 0.5) inset, 0 1px 0 rgba(0, 0, 0, 0.15); background-image: none; background-attachment: scroll; background-repeat: repeat; background-color: #2EA2CC; margin: 0; padding: 0 10px 1px; border: 1px solid #0074a2;">Update Now</a>
-					</p>
-				<?php else: ?>
-					<p style="font-size: 100%; vertical-align: baseline; margin: 1em 0; padding: 0; border: 0;">
-						No updates are available at this time.
-					</p>
-				<?php endif ?>
+				<h4>Questions?</h4>
+        <p>Need support? Email us at <a href="mailto:support@wphacklock.com">support@wphacklock.com</a>
 
 			</div>
 		</td>

@@ -295,7 +295,7 @@ $title = 'WP HackLock Activity for the week of ' . date_i18n(get_option('date_fo
 				<div style="float: right;text-align: right;line-height:1.1;color: #666666;margin:20px 0 0;">
 					Activity for week of<br> <strong><?php echo date_i18n(get_option('date_format')) ?></strong>
 				</div>
-        <a href="http://www.wphacklock.com"><img src="http://www.wphacklock.com/wp-content/uploads/2015/04/SM_WP_350x661.png" alt="" /></a>
+        <a href="http://www.wphacklock.com"><img src="http://www.wphacklock.com/wp-content/uploads/2015/06/WPHackLock_350x66.png" alt="" /></a>
 
 				<h2>Top 10 IP's Blocked</h2>
 
@@ -421,38 +421,10 @@ $title = 'WP HackLock Activity for the week of ' . date_i18n(get_option('date_fo
 
 				<?php wfHelperString::cycle(); ?>
 
-				<h2>Updates Needed</h2>
-
-				<?php if ($updates_needed['core']): ?>
-					<h4>Core</h4>
-					<ul>
-						<li>A new version of WordPress (v<?php echo esc_html($updates_needed['core']) ?>) is available.</li>
-					</ul>
-				<?php endif ?>
-				<?php if ($updates_needed['plugins']): ?>
-					<h4>Plugins</h4>
-					<ul>
-						<?php foreach ($updates_needed['plugins'] as $plugin): ?>
-							<li>
-								A new version of the plugin "<?php echo esc_html("{$plugin['Name']} (v{$plugin['newVersion']})") ?>" is available.
-							</li>
-						<?php endforeach ?>
-					</ul>
-				<?php endif ?>
-				<?php if ($updates_needed['themes']): ?>
-					<h4>Themes</h4>
-					<ul>
-						<?php foreach ($updates_needed['themes'] as $theme): ?>
-							<li>
-								A new version of the theme "<?php echo esc_html("{$theme['name']} (v{$theme['newVersion']})") ?>" is available.
-							</li>
-						<?php endforeach ?>
-					</ul>
-				<?php endif ?>
+				<h4>Questions?</h4>
+        <p>Need support? Email us at <a href="mailto:support@wphacklock.com">support@wphacklock.com</a>
 				
-				<?php if ($updates_needed['core'] || $updates_needed['plugins'] || $updates_needed['themes']): ?>
-					<p><a class="button" href="<?php echo esc_attr(admin_url('update-core.php')) ?>">Update Now</a></p>
-				<?php endif ?>
+				
 
 <!--			<p>Generated in --><?php //printf('%.4f seconds', $microseconds) ?><!--</p>-->
 
