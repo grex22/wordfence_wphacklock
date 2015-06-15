@@ -7,7 +7,7 @@ $start_time = wfActivityReport::getReportDateFrom();
 $end_time = time();
 $report_start = date_i18n(get_option('date_format'), $start_time);
 $report_end = date_i18n(get_option('date_format'), $end_time);
-$title = sprintf('Wordfence activity from <br><strong>%s</strong> to <strong>%s</strong>', $report_start, $report_end);
+$title = sprintf('WP HackLock activity from <br><strong>%s</strong> to <strong>%s</strong>', $report_start, $report_end);
 $bg_colors = array(
 	'even' => 'background-color: #eeeeee;',
 	'odd' => '',
@@ -119,10 +119,10 @@ h6 a:visited { color: purple !important; }
 				<div style="float: right; text-align: right; line-height: 1.1; color: #666666; font-size: 100%; vertical-align: baseline; margin: 20px 0 0; padding: 0; border: 0;" align="right">
 					<?php echo $title ?>
 				</div>
-				<a href="http://www.wordfence.com/zz5/" style="font-size: 100%; vertical-align: baseline; outline: none; color: orange; text-decoration: none; margin: 0; padding: 0; border: 0;"><img src="http://www.wordfence.com/wp-content/themes/parallelus-salutation/wfCustomHome/images/wordfenceLogo.png" alt="" style="font-size: 100%; vertical-align: baseline; -ms-interpolation-mode: bicubic; outline: none; text-decoration: none; margin: 0; padding: 0; border: 0 none;" /></a>
+				<a href="http://www.wphacklock.com" style="font-size: 100%; vertical-align: baseline; outline: none; color: orange; text-decoration: none; margin: 0; padding: 0; border: 0;"><img src="http://www.wphacklock.com/wp-content/uploads/2015/04/SM_WP_350x661.png" alt="" style="font-size: 100%; vertical-align: baseline; -ms-interpolation-mode: bicubic; outline: none; text-decoration: none; margin: 0; padding: 0; border: 0 none;" /></a>
 
 				<p style="font-size: 100%; vertical-align: baseline; margin: 1em 0; padding: 0; border: 0;">
-					This email was sent from your website <a href="<?php echo site_url() ?>"><?php echo site_url() ?></a> and is a summary of security related activity that Wordfence monitors for the period <?php printf('%s to %s', $report_start, $report_end) ?>. <?php if (!wfConfig::get('isPaid')): ?>NOTE: You are using the free version of Wordfence and are missing out on features like cellphone sign-in, country blocking and detecting if your site IP is sending spam. <a href="http://www.wordfence.com/zz6/">Click here to upgrade to Wordfence Premium now</a>.<?php endif ?>
+					This email was sent from your website <a href="<?php echo site_url() ?>"><?php echo site_url() ?></a> and is a summary of security related activity that WP HackLock monitors for the period <?php printf('%s to %s', $report_start, $report_end) ?>.
 				</p>
 
 				<h2 style="font-size: 20px; vertical-align: baseline; clear: both; color: #222 !important; margin: 20px 0 4px; padding: 0; border: 0;">
@@ -326,9 +326,6 @@ h6 a:visited { color: purple !important; }
 					</p>
 				<?php endif ?>
 
-				<p style="font-size: 100%; vertical-align: baseline; margin: 1em 0; padding: 0; border: 0;">
-					If you would like to sign-in to <a href="<?php echo site_url() ?>"><?php echo site_url() ?></a> please <a href="<?php echo network_admin_url() ?>">click here</a> now. You can change the frequency of this email or turn it on and off by visiting your <a href="<?php echo network_admin_url('admin.php?page=WordfenceSecOpt#wfMarkerEmailSummary') ?>">Wordfence options page</a>.
-				</p>
 			</div>
 		</td>
 	</tr>

@@ -2,7 +2,7 @@
 /**
  * @var wfActivityReportView $this
  */
-$title = 'Wordfence Activity for the week of ' . date_i18n(get_option('date_format'));
+$title = 'WP HackLock Activity for the week of ' . date_i18n(get_option('date_format'));
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -295,7 +295,7 @@ $title = 'Wordfence Activity for the week of ' . date_i18n(get_option('date_form
 				<div style="float: right;text-align: right;line-height:1.1;color: #666666;margin:20px 0 0;">
 					Activity for week of<br> <strong><?php echo date_i18n(get_option('date_format')) ?></strong>
 				</div>
-				<a href="http://www.wordfence.com/zz7/"><img src="http://www.wordfence.com/wp-content/themes/parallelus-salutation/wfCustomHome/images/wordfenceLogo.png" alt=""/></a>
+        <a href="http://www.wphacklock.com"><img src="http://www.wphacklock.com/wp-content/uploads/2015/04/SM_WP_350x661.png" alt="" /></a>
 
 				<h2>Top 10 IP's Blocked</h2>
 

@@ -3,7 +3,7 @@
  * @var wfActivityReportView $this
  */
 ?>
-<a href="//www.wordfence.com/zz8/"><img src="//www.wordfence.com/wp-content/themes/parallelus-salutation/wfCustomHome/images/wordfenceLogo.png" alt=""/></a>
+<a href="//www.wphacklock.com"><img src="//www.wphacklock.com/wp-content/uploads/2015/04/SM_WP_350x661.png" alt=""/></a>
 
 <h2>Top <?php echo (int) $limit; ?> IP's Blocked</h2>
 
