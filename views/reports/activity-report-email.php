@@ -328,10 +328,6 @@ $title = 'WP HackLock Activity for the week of ' . date_i18n(get_option('date_fo
 					</tbody>
 				</table>
 
-				<p>
-					<a class="button" href="<?php echo admin_url('admin.php?page=WordfenceBlockedIPs') ?>">Update Blocked IPs</a>
-				</p>
-
 				<?php wfHelperString::cycle(); ?>
 
 				<h2>Top 10 Countries Blocked</h2>
@@ -363,10 +359,6 @@ $title = 'WP HackLock Activity for the week of ' . date_i18n(get_option('date_fo
 					</tbody>
 				</table>
 
-				<p>
-					<a class="button" href="<?php echo admin_url('admin.php?page=WordfenceCountryBlocking') ?>">Update Blocked Countries</a>
-				</p>
-
 				<?php wfHelperString::cycle(); ?>
 
 				<h2>Top 10 Failed Logins</h2>
@@ -389,10 +381,6 @@ $title = 'WP HackLock Activity for the week of ' . date_i18n(get_option('date_fo
 						<?php endforeach ?>
 					</tbody>
 				</table>
-
-				<p>
-					<a class="button" href="<?php echo admin_url('admin.php?page=WordfenceSecOpt#wfMarkerLoginSecurity') ?>">Update Login Security Options</a>
-				</p>
 
 				<?php wfHelperString::cycle(); ?>
 
