@@ -3315,7 +3315,7 @@ EOL;
 			}
 			wp_add_dashboard_widget(
 				'wordfence_activity_report_widget',
-				'Wordfence activity in the past ' . $report_date_range,
+				'Security activity in the past ' . $report_date_range,
 				array('wfActivityReport', 'outputDashboardWidget')
 			);
 		}
