@@ -24,7 +24,7 @@
 					<td><code><?php echo wfUtils::inet_ntop($row->IP) ?></code></td>
 					<td>
 						<?php if ($row->countryCode): ?>
-							<img src="//www.wordfence.com/images/flags/<?php echo esc_attr(strtolower($row->countryCode)) ?>.png" class="wfFlag" height="11" width="16">
+							<img src="//www.wordfence.com/images/flags/<?php echo esc_attr(strtolower($row->countryCode)) ?>.png" class="wfFlag" height="11" width="16" alt="<?php echo esc_attr($row->countryName) ?>" title="<?php echo esc_attr($row->countryName) ?>">
 							&nbsp;
 							<?php echo esc_html($row->countryCode) ?>
 						<?php else: ?>
@@ -66,7 +66,7 @@
 				<tr class="<?php echo wfHelperString::cycle('odd', 'even') ?>">
 					<td>
 						<?php if ($row->countryCode): ?>
-							<img src="//www.wordfence.com/images/flags/<?php echo strtolower($row->countryCode) ?>.png" class="wfFlag" height="11" width="16">
+							<img src="//www.wordfence.com/images/flags/<?php echo strtolower($row->countryCode) ?>.png" class="wfFlag" height="11" width="16" alt="<?php echo esc_attr($row->countryName) ?>" title="<?php echo esc_attr($row->countryName) ?>">
 							&nbsp;
 							<?php echo esc_html($row->countryCode) ?>
 						<?php else: ?>
@@ -153,8 +153,52 @@
 </table>
 <?php */ ?>
 
+<?php
+  if(is_plugin_active('aryo-activity-log/aryo-activity-log.php')):
+    ?>
+    <h2>WP Hack Lock Updates Performed this Month</h2>
+    <table class="wf-table">
+      <thead>
+        <tr>
+          <th>Action</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>New Version (if applicable)</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+    <?php
+      global $wpdb;
+      $items = $wpdb->get_results( $wpdb->prepare(
+			'SELECT * FROM `%1$s` WHERE 1=1 AND `object_type` = \'Plugin\' OR `object_type` = \'Core\' ORDER BY `hist_time` desc',
+			$wpdb->activity_log) );
+      if($items):
+        foreach($items as $i): ?> 
+          <tr>
+          <td><?php echo ucfirst($i->action); ?></td>
+          <td><?php echo ucfirst($i->object_type); ?></td>
+          <td><?php echo ucfirst($i->object_name); ?></td>
+          <td><?php echo ucfirst($i->object_subtype); ?></td>
+          </tr>
+        <?php
+        endforeach;
+      else:?>
+        <tr>
+          <td colspan="4">
+            Activity is unavailable from the previous month.
+          </td>
+        </tr>
+      <?php
+      endif;?>
+      </tbody>
+    </table>
+  <?php      
+  endif;
+?>
 
 <?php wfHelperString::cycle(); ?>
+
 
 <h4>Questions?</h4>
 <p>Need support? Email us at <a href="mailto:support@wphacklock.com">support@wphacklock.com</a>
