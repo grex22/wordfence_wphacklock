@@ -120,7 +120,11 @@ h6 a:visited { color: purple !important; }
 					<?php echo $title ?>
 				</div>
 				<a href="http://www.wphacklock.com" style="font-size: 100%; vertical-align: baseline; outline: none; color: orange; text-decoration: none; margin: 0; padding: 0; border: 0;"><img src="http://www.wphacklock.com/wp-content/uploads/2015/06/WPHackLock_350x66.png" alt="" style="font-size: 100%; vertical-align: baseline; -ms-interpolation-mode: bicubic; outline: none; text-decoration: none; margin: 0; padding: 0; border: 0 none;" /></a>
-
+        
+        <h2 style="font-size: 20px; vertical-align: baseline; clear: both; color: #222 !important; margin: 20px 0 4px; padding: 0; border: 0;">WP Hack Lock Monthly Security Update</h2>
+				<p style="font-size: 100%; vertical-align: baseline; margin: 1em 0; padding: 0; border: 0;">
+        Another month has passed and your website is running smoothly thanks to WP Hack Lock! For your convenience, here is a report of just a few of the actions we took on your website this month to keep it safe and secure.
+        </p>
 				<p style="font-size: 100%; vertical-align: baseline; margin: 1em 0; padding: 0; border: 0;">
 					This email was sent from your website <a href="<?php echo site_url() ?>"><?php echo site_url() ?></a> and is a summary of security related activity that WP HackLock monitors for the period <?php printf('%s to %s', $report_start, $report_end) ?>.
 				</p>
@@ -246,7 +250,7 @@ h6 a:visited { color: purple !important; }
 				</table>
 
 				<?php wfHelperString::cycle(); ?>
-
+        <?php /* ?>
 				<h2 style="font-size: 20px; vertical-align: baseline; clear: both; color: #222 !important; margin: 20px 0 4px; padding: 0; border: 0;">Recently Modified Files</h2>
 
 				<table class="activity-table" style="font-size: 100%; vertical-align: baseline; border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; max-width: 100%; margin: 0; padding: 0; border: 0;">
@@ -272,7 +276,53 @@ h6 a:visited { color: purple !important; }
 						<?php endforeach ?>
 					</tbody>
 				</table>
-
+        <?php */ ?>
+        <?php
+        if(is_plugin_active('aryo-activity-log/aryo-activity-log.php')):
+          ?>
+          <h2 style="font-size: 20px; vertical-align: baseline; clear: both; color: #222 !important; margin: 20px 0 4px; padding: 0; border: 0;">WP Hack Lock Updates Performed this Month</h2>
+          <table class="activity-table" style="font-size: 100%; vertical-align: baseline; border-collapse: collapse; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; max-width: 100%; margin: 0; padding: 0; border: 0;">
+            <thead style="font-size: 100%; vertical-align: baseline; margin: 0; padding: 0; border: 0;">
+              <tr style="font-size: 100%; vertical-align: baseline; margin: 0; padding: 0; border: 0;">
+                <th style="font-size: 100%; vertical-align: baseline; font-weight: bold; text-align: left; color: #FFFFFF; background-color: #222; margin: 0; padding: 6px 4px; border: 1px solid #474747;" align="left" bgcolor="#222" valign="baseline">Action</th>
+                <th style="font-size: 100%; vertical-align: baseline; font-weight: bold; text-align: left; color: #FFFFFF; background-color: #222; margin: 0; padding: 6px 4px; border: 1px solid #474747;" align="left" bgcolor="#222" valign="baseline">Type</th>
+                <th style="font-size: 100%; vertical-align: baseline; font-weight: bold; text-align: left; color: #FFFFFF; background-color: #222; margin: 0; padding: 6px 4px; border: 1px solid #474747;" align="left" bgcolor="#222" valign="baseline">Description</th>
+                <th style="font-size: 100%; vertical-align: baseline; font-weight: bold; text-align: left; color: #FFFFFF; background-color: #222; margin: 0; padding: 6px 4px; border: 1px solid #474747;" align="left" bgcolor="#222" valign="baseline">New Version (if applicable)</th>
+              </tr>
+            </thead>
+            
+            <tbody style="font-size: 100%; vertical-align: baseline; margin: 0; padding: 0; border: 0;">
+          <?php
+            global $wpdb;
+            $items = $wpdb->get_results( $wpdb->prepare(
+            'SELECT * FROM `%1$s` WHERE 1=1 AND `object_type` = \'Plugin\' OR `object_type` = \'Core\' ORDER BY `hist_time` desc',
+            $wpdb->activity_log) );
+            if($items):
+              foreach($items as $i): ?>
+                <?php
+                $stripe = wfHelperString::cycle('odd', 'even');
+                ?>
+                <tr class="<?php echo $stripe ?>" style="font-size: 100%; vertical-align: baseline; margin: 0; padding: 0; border: 0;" align="left" valign="baseline">
+                <td style="font-size: 100%; vertical-align: baseline; font-weight: normal; text-align: left; border-collapse: collapse; margin: 0; padding: 6px 4px; border: 1px solid #cccccc;white-space: nowrap;<?php echo $bg_colors[$stripe] ?>" align="left" valign="baseline"><?php echo ucfirst($i->action); ?></td>
+                <td style="font-size: 100%; vertical-align: baseline; font-weight: normal; text-align: left; border-collapse: collapse; margin: 0; padding: 6px 4px; border: 1px solid #cccccc;white-space: nowrap;<?php echo $bg_colors[$stripe] ?>" align="left" valign="baseline"><?php echo ucfirst($i->object_type); ?></td>
+                <td style="font-size: 100%; vertical-align: baseline; font-weight: normal; text-align: left; border-collapse: collapse; margin: 0; padding: 6px 4px; border: 1px solid #cccccc;white-space: nowrap;<?php echo $bg_colors[$stripe] ?>" align="left" valign="baseline"><?php echo ucfirst($i->object_name); ?></td>
+                <td style="font-size: 100%; vertical-align: baseline; font-weight: normal; text-align: left; border-collapse: collapse; margin: 0; padding: 6px 4px; border: 1px solid #cccccc;white-space: nowrap;<?php echo $bg_colors[$stripe] ?>" align="left" valign="baseline"><?php echo ucfirst($i->object_subtype); ?></td>
+                </tr>
+              <?php
+              endforeach;
+            else:?>
+              <tr>
+                <td colspan="4">
+                  Activity is unavailable from the previous month.
+                </td>
+              </tr>
+            <?php
+            endif;?>
+            </tbody>
+          </table>
+        <?php      
+        endif;
+        ?>
 				<?php wfHelperString::cycle(); ?>
 
 				<h4>Questions?</h4>

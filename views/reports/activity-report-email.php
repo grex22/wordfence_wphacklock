@@ -383,7 +383,7 @@ $title = 'WP HackLock Activity for the week of ' . date_i18n(get_option('date_fo
 				</table>
 
 				<?php wfHelperString::cycle(); ?>
-
+        <?php /* ?>
 				<h2>Recently Modified Files</h2>
 
 				<table class="wf-table">
@@ -406,6 +406,51 @@ $title = 'WP HackLock Activity for the week of ' . date_i18n(get_option('date_fo
 						<?php endforeach ?>
 					</tbody>
 				</table>
+        <?php */ ?>
+        
+        <?php
+        if(is_plugin_active('aryo-activity-log/aryo-activity-log.php')):
+          ?>
+          <h2>WP Hack Lock Updates Performed this Month</h2>
+          <table class="wf-table">
+            <thead>
+              <tr>
+                <th>Action</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>New Version (if applicable)</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+          <?php
+            global $wpdb;
+            $items = $wpdb->get_results( $wpdb->prepare(
+            'SELECT * FROM `%1$s` WHERE 1=1 AND `object_type` = \'Plugin\' OR `object_type` = \'Core\' ORDER BY `hist_time` desc',
+            $wpdb->activity_log) );
+            if($items):
+              foreach($items as $i): ?> 
+                <tr>
+                <td><?php echo ucfirst($i->action); ?></td>
+                <td><?php echo ucfirst($i->object_type); ?></td>
+                <td><?php echo ucfirst($i->object_name); ?></td>
+                <td><?php echo ucfirst($i->object_subtype); ?></td>
+                </tr>
+              <?php
+              endforeach;
+            else:?>
+              <tr>
+                <td colspan="4">
+                  Activity is unavailable from the previous month.
+                </td>
+              </tr>
+            <?php
+            endif;?>
+            </tbody>
+          </table>
+        <?php      
+        endif;
+        ?>
 
 				<?php wfHelperString::cycle(); ?>
 

@@ -7,6 +7,12 @@ Author: Wordfence
 Version: 6.0.10
 Author URI: http://www.wordfence.com/
 */
+require 'plugin-update-checker/plugin-update-checker.php';
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+    'http://ripfish.com/plugins/hacklock-metadata.json',
+    __FILE__
+);
+
 if(defined('WP_INSTALLING') && WP_INSTALLING){
 	return;
 }
@@ -24,6 +30,8 @@ if(! defined('WORDFENCE_VERSIONONLY_MODE')){ //Used to get version from file.
 	require_once('lib/wordfenceClass.php');
 	wordfence::install_actions();
 }
+
+
 
 
 ?>

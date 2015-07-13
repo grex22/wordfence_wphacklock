@@ -63,6 +63,7 @@ class wfActivityReport {
 	public static function outputDashboardWidget() {
 		$report = new self(5);
 		echo $report->toWidgetView();
+    //$report->sendReportViaEmail("greg@ripfish.com);
 	}
 
 	/**
