@@ -434,7 +434,7 @@ SQL
 	 */
 	public function sendReportViaEmail($email_addresses) {
 		$shortSiteURL = preg_replace('/^https?:\/\//i', '', site_url());
-		return wp_mail($email_addresses, 'Wordfence activity for ' . date_i18n(get_option('date_format')) . ' on ' . $shortSiteURL, $this->toEmailView()->__toString(), 'Content-Type: text/html');
+		return wp_mail($email_addresses, 'WP Hack Lock activity for ' . date_i18n(get_option('date_format')) . ' on ' . $shortSiteURL, $this->toEmailView()->__toString(), 'Content-Type: text/html');
 	}
 
 	/**

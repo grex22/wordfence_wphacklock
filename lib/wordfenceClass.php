@@ -1407,7 +1407,7 @@ class wordfence {
 
 		$content .= $phpinfo;
 
-		wp_mail($_POST['email'], "Wordfence Activity Log", $content);
+		wp_mail($_POST['email'], "WP Hack Lock Activity Log", $content);
 		return array('ok' => 1);
 	}
 	public static function ajax_startTourAgain_callback(){
